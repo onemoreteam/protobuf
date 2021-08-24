@@ -32,15 +32,11 @@
 
 using System;
 using System.Buffers;
-using System.Buffers.Binary;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
-using Google.Protobuf.Collections;
 
 namespace Google.Protobuf
 {
@@ -324,17 +320,7 @@ namespace Google.Protobuf
         /// </summary>
         public static uint ParseRawLittleEndian32(ref ReadOnlySpan<byte> buffer, ref ParserInternalState state)
         {
-            const int uintLength = sizeof(uint);
-            const int ulongLength = sizeof(ulong);
-            if (state.bufferPos + ulongLength > state.bufferSize)
-            {
-                return ParseRawLittleEndian32SlowPath(ref buffer, ref state);
-            }
-            // ReadUInt32LittleEndian is many times slower than ReadUInt64LittleEndian (at least on some runtimes)
-            // so it's faster better to use ReadUInt64LittleEndian and truncate the result.
-            uint result = (uint) BinaryPrimitives.ReadUInt64LittleEndian(buffer.Slice(state.bufferPos, ulongLength));
-            state.bufferPos += uintLength;
-            return result;
+            return ParseRawLittleEndian32SlowPath(ref buffer, ref state);
         }
 
         private static uint ParseRawLittleEndian32SlowPath(ref ReadOnlySpan<byte> buffer, ref ParserInternalState state)
@@ -351,14 +337,7 @@ namespace Google.Protobuf
         /// </summary>
         public static ulong ParseRawLittleEndian64(ref ReadOnlySpan<byte> buffer, ref ParserInternalState state)
         {
-            const int length = sizeof(ulong);
-            if (state.bufferPos + length > state.bufferSize)
-            {
-                return ParseRawLittleEndian64SlowPath(ref buffer, ref state);
-            }
-            ulong result = BinaryPrimitives.ReadUInt64LittleEndian(buffer.Slice(state.bufferPos, length));
-            state.bufferPos += length;
-            return result;
+            return ParseRawLittleEndian64SlowPath(ref buffer, ref state);
         }
 
         private static ulong ParseRawLittleEndian64SlowPath(ref ReadOnlySpan<byte> buffer, ref ParserInternalState state)
@@ -380,15 +359,7 @@ namespace Google.Protobuf
         /// </summary>
         public static double ParseDouble(ref ReadOnlySpan<byte> buffer, ref ParserInternalState state)
         {
-            const int length = sizeof(double);
-            if (!BitConverter.IsLittleEndian || state.bufferPos + length > state.bufferSize)
-            {
-                return BitConverter.Int64BitsToDouble((long)ParseRawLittleEndian64(ref buffer, ref state));
-            }
-            // ReadUnaligned uses processor architecture for endianness.
-            double result = Unsafe.ReadUnaligned<double>(ref MemoryMarshal.GetReference(buffer.Slice(state.bufferPos, length)));
-            state.bufferPos += length;
-            return result;
+            return BitConverter.Int64BitsToDouble((long)ParseRawLittleEndian64(ref buffer, ref state));
         }
 
         /// <summary>
@@ -396,15 +367,7 @@ namespace Google.Protobuf
         /// </summary>
         public static float ParseFloat(ref ReadOnlySpan<byte> buffer, ref ParserInternalState state)
         {
-            const int length = sizeof(float);
-            if (!BitConverter.IsLittleEndian || state.bufferPos + length > state.bufferSize)
-            {
-                return ParseFloatSlow(ref buffer, ref state);
-            }
-            // ReadUnaligned uses processor architecture for endianness.
-            float result = Unsafe.ReadUnaligned<float>(ref MemoryMarshal.GetReference(buffer.Slice(state.bufferPos, length)));
-            state.bufferPos += length;
-            return result;  
+            return ParseFloatSlow(ref buffer, ref state);
         }
 
         private static unsafe float ParseFloatSlow(ref ReadOnlySpan<byte> buffer, ref ParserInternalState state)

@@ -31,8 +31,6 @@
 #endregion
 
 using System;
-using System.Buffers.Binary;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 #if GOOGLE_PROTOBUF_SIMD
@@ -70,25 +68,9 @@ namespace Google.Protobuf
         /// <summary>
         /// Writes a float field value, without a tag, to the stream.
         /// </summary>
-        public static unsafe void WriteFloat(ref Span<byte> buffer, ref WriterInternalState state, float value)
+        public static void WriteFloat(ref Span<byte> buffer, ref WriterInternalState state, float value)
         {
-            const int length = sizeof(float);
-            if (buffer.Length - state.position >= length)
-            {
-                // if there's enough space in the buffer, write the float directly into the buffer
-                var floatSpan = buffer.Slice(state.position, length);
-                Unsafe.WriteUnaligned(ref MemoryMarshal.GetReference(floatSpan), value);
-
-                if (!BitConverter.IsLittleEndian)
-                {
-                    floatSpan.Reverse();
-                }
-                state.position += length;
-            }
-            else
-            {
-                WriteFloatSlowPath(ref buffer, ref state, value);
-            }
+            WriteFloatSlowPath(ref buffer, ref state, value);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -483,16 +465,7 @@ namespace Google.Protobuf
 
         public static void WriteRawLittleEndian32(ref Span<byte> buffer, ref WriterInternalState state, uint value)
         {
-            const int length = sizeof(uint);
-            if (state.position + length > buffer.Length)
-            {
-                WriteRawLittleEndian32SlowPath(ref buffer, ref state, value);
-            }
-            else
-            {
-                BinaryPrimitives.WriteUInt32LittleEndian(buffer.Slice(state.position), value);
-                state.position += length;
-            }
+            WriteRawLittleEndian32SlowPath(ref buffer, ref state, value);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -506,16 +479,7 @@ namespace Google.Protobuf
 
         public static void WriteRawLittleEndian64(ref Span<byte> buffer, ref WriterInternalState state, ulong value)
         {
-            const int length = sizeof(ulong);
-            if (state.position + length > buffer.Length)
-            {
-                WriteRawLittleEndian64SlowPath(ref buffer, ref state, value);
-            }
-            else
-            {
-                BinaryPrimitives.WriteUInt64LittleEndian(buffer.Slice(state.position), value);
-                state.position += length;
-            }
+            WriteRawLittleEndian64SlowPath(ref buffer, ref state, value);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
