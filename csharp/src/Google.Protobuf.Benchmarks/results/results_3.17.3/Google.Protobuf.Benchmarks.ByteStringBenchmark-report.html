@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Google.Protobuf.Benchmarks.ByteStringBenchmark-20210825-153755</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19043
+Intel Core i7-6700 CPU 3.40GHz (Skylake), 1 CPU, 8 logical and 4 physical cores
+.NET Core SDK=5.0.302
+  [Host]     : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+  DefaultJob : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>PayloadSize</th><th>      Mean</th><th>    Error</th><th>     StdDev</th><th>    Median</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>CopyFrom</td><td>0</td><td>52.602 ns</td><td>0.6883 ns</td><td>0.6438 ns</td><td>52.807 ns</td><td>0.0134</td><td>-</td><td>-</td><td>56 B</td>
+</tr><tr><td>UnsafeWrap</td><td>0</td><td>5.371 ns</td><td>0.1387 ns</td><td>0.1298 ns</td><td>5.357 ns</td><td>0.0076</td><td>-</td><td>-</td><td>32 B</td>
+</tr><tr><td>CopyFrom</td><td>1024</td><td>119.113 ns</td><td>2.4105 ns</td><td>2.7760 ns</td><td>119.063 ns</td><td>0.2580</td><td>-</td><td>-</td><td>1080 B</td>
+</tr><tr><td>UnsafeWrap</td><td>1024</td><td>5.697 ns</td><td>0.1894 ns</td><td>0.1772 ns</td><td>5.700 ns</td><td>0.0076</td><td>-</td><td>-</td><td>32 B</td>
+</tr><tr><td>CopyFrom</td><td>131072</td><td>8,282.980 ns</td><td>165.2849 ns</td><td>220.6506 ns</td><td>8,291.450 ns</td><td>41.6565</td><td>41.6565</td><td>41.6565</td><td>131128 B</td>
+</tr><tr><td>UnsafeWrap</td><td>131072</td><td>5.259 ns</td><td>0.1799 ns</td><td>0.1767 ns</td><td>5.288 ns</td><td>0.0076</td><td>-</td><td>-</td><td>32 B</td>
+</tr><tr><td>CopyFrom</td><td>1048576</td><td>219,422.660 ns</td><td>4,338.1539 ns</td><td>11,275.4388 ns</td><td>217,896.936 ns</td><td>206.0547</td><td>205.5664</td><td>205.5664</td><td>1049565 B</td>
+</tr><tr><td>UnsafeWrap</td><td>1048576</td><td>5.270 ns</td><td>0.1768 ns</td><td>0.2420 ns</td><td>5.237 ns</td><td>0.0076</td><td>-</td><td>-</td><td>32 B</td>
+</tr><tr><td>CopyFrom</td><td>10485760</td><td>5,251,680.938 ns</td><td>445,877.4327 ns</td><td>1,314,679.6703 ns</td><td>6,028,859.375 ns</td><td>156.2500</td><td>156.2500</td><td>156.2500</td><td>10485814 B</td>
+</tr><tr><td>UnsafeWrap</td><td>10485760</td><td>5.231 ns</td><td>0.1445 ns</td><td>0.1206 ns</td><td>5.232 ns</td><td>0.0076</td><td>-</td><td>-</td><td>32 B</td>
+</tr></tbody></table>
+</body>
+</html>

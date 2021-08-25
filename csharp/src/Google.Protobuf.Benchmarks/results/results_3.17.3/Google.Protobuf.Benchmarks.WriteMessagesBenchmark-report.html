@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Google.Protobuf.Benchmarks.WriteMessagesBenchmark-20210825-161131</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19043
+Intel Core i7-6700 CPU 3.40GHz (Skylake), 1 CPU, 8 logical and 4 physical cores
+.NET Core SDK=5.0.302
+  [Host]     : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+  DefaultJob : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                                                        Method</th><th>messageCount</th><th>  Mean</th><th>Error</th><th>StdDev</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>ManyWrapperFieldsMessage_ToByteArray</td><td>?</td><td>807.67 ns</td><td>10.829 ns</td><td>10.129 ns</td><td>0.0429</td><td>-</td><td>-</td><td>184 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_WriteToCodedOutputStream</td><td>?</td><td>517.48 ns</td><td>7.457 ns</td><td>6.611 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_WriteToSpan</td><td>?</td><td>502.40 ns</td><td>7.506 ns</td><td>7.021 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_ToByteArray</td><td>?</td><td>395.53 ns</td><td>5.978 ns</td><td>5.300 ns</td><td>0.0401</td><td>-</td><td>-</td><td>168 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_WriteToCodedOutputStream</td><td>?</td><td>294.19 ns</td><td>4.604 ns</td><td>4.307 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_WriteToSpan</td><td>?</td><td>277.86 ns</td><td>4.161 ns</td><td>3.892 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>EmptyMessage_ToByteArray</td><td>?</td><td>34.19 ns</td><td>0.464 ns</td><td>0.388 ns</td><td>0.0210</td><td>-</td><td>-</td><td>88 B</td>
+</tr><tr><td>EmptyMessage_WriteToCodedOutputStream</td><td>?</td><td>27.50 ns</td><td>0.562 ns</td><td>0.526 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>EmptyMessage_WriteToSpan</td><td>?</td><td>12.26 ns</td><td>0.263 ns</td><td>0.233 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ManyWrapperFieldsMessage_WriteDelimitedMessagesToCodedOutputStream</td><td>10</td><td>7,596.10 ns</td><td>137.738 ns</td><td>122.101 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_WriteDelimitedMessagesToSpan</td><td>10</td><td>7,400.37 ns</td><td>54.982 ns</td><td>51.430 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_WriteDelimitedMessagesToCodedOutputStream</td><td>10</td><td>3,749.14 ns</td><td>21.743 ns</td><td>19.274 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_WriteDelimitedMessagesToSpan</td><td>10</td><td>3,618.80 ns</td><td>34.330 ns</td><td>32.112 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ManyWrapperFieldsMessage_WriteDelimitedMessagesToCodedOutputStream</td><td>100</td><td>75,962.50 ns</td><td>770.504 ns</td><td>683.032 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_WriteDelimitedMessagesToSpan</td><td>100</td><td>74,091.77 ns</td><td>966.210 ns</td><td>806.829 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_WriteDelimitedMessagesToCodedOutputStream</td><td>100</td><td>36,914.20 ns</td><td>505.599 ns</td><td>472.938 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_WriteDelimitedMessagesToSpan</td><td>100</td><td>36,021.93 ns</td><td>450.587 ns</td><td>399.433 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Google.Protobuf.Benchmarks.ParseMessagesBenchmark-20210825-154455</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19043
+Intel Core i7-6700 CPU 3.40GHz (Skylake), 1 CPU, 8 logical and 4 physical cores
+.NET Core SDK=5.0.302
+  [Host]     : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+  DefaultJob : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                                                         Method</th><th>messageCount</th><th>     Mean</th><th>  Error</th><th> StdDev</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>ManyWrapperFieldsMessage_ParseFromByteArray</td><td>?</td><td>502.57 ns</td><td>8.289 ns</td><td>7.754 ns</td><td>0.4644</td><td>-</td><td>-</td><td>1944 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_ParseFromReadOnlySequence</td><td>?</td><td>465.91 ns</td><td>6.240 ns</td><td>5.836 ns</td><td>0.4244</td><td>-</td><td>-</td><td>1776 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_ParseFromByteArray</td><td>?</td><td>361.73 ns</td><td>5.299 ns</td><td>4.957 ns</td><td>0.2637</td><td>-</td><td>-</td><td>1104 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_ParseFromReadOnlySequence</td><td>?</td><td>296.73 ns</td><td>5.924 ns</td><td>5.542 ns</td><td>0.2236</td><td>-</td><td>-</td><td>936 B</td>
+</tr><tr><td>RepeatedFieldMessage_ParseFromByteArray</td><td>?</td><td>22,816.80 ns</td><td>259.420 ns</td><td>229.969 ns</td><td>2.0142</td><td>-</td><td>-</td><td>8432 B</td>
+</tr><tr><td>RepeatedFieldMessage_ParseFromReadOnlySequence</td><td>?</td><td>23,301.61 ns</td><td>248.751 ns</td><td>232.682 ns</td><td>1.9531</td><td>0.0305</td><td>-</td><td>8264 B</td>
+</tr><tr><td>EmptyMessage_ParseFromByteArray</td><td>?</td><td>90.81 ns</td><td>1.478 ns</td><td>1.383 ns</td><td>0.0459</td><td>-</td><td>-</td><td>192 B</td>
+</tr><tr><td>EmptyMessage_ParseFromReadOnlySequence</td><td>?</td><td>42.44 ns</td><td>0.639 ns</td><td>0.567 ns</td><td>0.0057</td><td>-</td><td>-</td><td>24 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_ParseDelimitedMessagesFromByteArray</td><td>10</td><td>4,918.26 ns</td><td>95.898 ns</td><td>121.280 ns</td><td>4.2801</td><td>-</td><td>-</td><td>17928 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_ParseDelimitedMessagesFromReadOnlySequence</td><td>10</td><td>4,594.24 ns</td><td>86.166 ns</td><td>92.196 ns</td><td>4.2419</td><td>-</td><td>-</td><td>17760 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_ParseDelimitedMessagesFromByteArray</td><td>10</td><td>3,212.55 ns</td><td>52.493 ns</td><td>49.102 ns</td><td>2.2774</td><td>-</td><td>-</td><td>9528 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_ParseDelimitedMessagesFromReadOnlySequence</td><td>10</td><td>2,862.65 ns</td><td>48.551 ns</td><td>45.415 ns</td><td>2.2354</td><td>-</td><td>-</td><td>9360 B</td>
+</tr><tr><td>RepeatedFieldMessage_ParseDelimitedMessagesFromByteArray</td><td>10</td><td>227,533.93 ns</td><td>1,110.191 ns</td><td>927.060 ns</td><td>19.5313</td><td>-</td><td>-</td><td>82808 B</td>
+</tr><tr><td>RepeatedFieldMessage_ParseDelimitedMessagesFromReadOnlySequence</td><td>10</td><td>251,709.85 ns</td><td>3,024.495 ns</td><td>2,829.114 ns</td><td>19.5313</td><td>-</td><td>-</td><td>82640 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_ParseDelimitedMessagesFromByteArray</td><td>100</td><td>48,959.12 ns</td><td>952.199 ns</td><td>977.838 ns</td><td>42.4805</td><td>-</td><td>-</td><td>177768 B</td>
+</tr><tr><td>ManyWrapperFieldsMessage_ParseDelimitedMessagesFromReadOnlySequence</td><td>100</td><td>44,630.36 ns</td><td>881.469 ns</td><td>865.721 ns</td><td>42.4194</td><td>-</td><td>-</td><td>177600 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_ParseDelimitedMessagesFromByteArray</td><td>100</td><td>31,988.61 ns</td><td>521.557 ns</td><td>487.865 ns</td><td>22.3999</td><td>-</td><td>-</td><td>93768 B</td>
+</tr><tr><td>ManyPrimitiveFieldsMessage_ParseDelimitedMessagesFromReadOnlySequence</td><td>100</td><td>28,401.73 ns</td><td>412.714 ns</td><td>386.053 ns</td><td>22.3694</td><td>-</td><td>-</td><td>93600 B</td>
+</tr><tr><td>RepeatedFieldMessage_ParseDelimitedMessagesFromByteArray</td><td>100</td><td>2,295,917.68 ns</td><td>33,185.432 ns</td><td>31,041.674 ns</td><td>195.3125</td><td>-</td><td>-</td><td>826568 B</td>
+</tr><tr><td>RepeatedFieldMessage_ParseDelimitedMessagesFromReadOnlySequence</td><td>100</td><td>2,520,903.75 ns</td><td>23,468.473 ns</td><td>21,952.424 ns</td><td>195.3125</td><td>-</td><td>-</td><td>826400 B</td>
+</tr></tbody></table>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Google.Protobuf.Benchmarks.WriteRawPrimitivesBenchmark-20210825-161641</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19043
+Intel Core i7-6700 CPU 3.40GHz (Skylake), 1 CPU, 8 logical and 4 physical cores
+.NET Core SDK=5.0.302
+  [Host]     : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+  DefaultJob : .NET Core 5.0.8 (CoreCLR 5.0.821.31504, CoreFX 5.0.821.31504), X64 RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                         Method</th><th>BytesToWrite</th><th>encodedSize</th><th>    Mean</th><th>  Error</th><th> StdDev</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>WriteRawVarint32_CodedOutputStream</td><td>10080</td><td>1</td><td>33,546.996 ns</td><td>306.8743 ns</td><td>272.0361 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint32_WriteContext</td><td>10080</td><td>1</td><td>26,831.657 ns</td><td>291.3948 ns</td><td>272.5709 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>1</td><td>34,080.617 ns</td><td>464.0259 ns</td><td>434.0501 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>1</td><td>26,848.553 ns</td><td>352.2782 ns</td><td>329.5213 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteString_CodedOutputStream</td><td>10080</td><td>1</td><td>190,917.235 ns</td><td>1,062.6096 ns</td><td>941.9757 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteString_WriteContext</td><td>10080</td><td>1</td><td>167,385.289 ns</td><td>3,043.3281 ns</td><td>2,697.8311 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteBytes_CodedOutputStream</td><td>10080</td><td>1</td><td>116,011.048 ns</td><td>961.9611 ns</td><td>899.8190 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteBytes_WriteContext</td><td>10080</td><td>1</td><td>110,381.107 ns</td><td>1,714.4988 ns</td><td>1,431.6842 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint32_CodedOutputStream</td><td>10080</td><td>2</td><td>27,058.622 ns</td><td>357.5773 ns</td><td>334.4780 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint32_WriteContext</td><td>10080</td><td>2</td><td>25,928.318 ns</td><td>248.6384 ns</td><td>232.5765 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>2</td><td>26,174.560 ns</td><td>214.5196 ns</td><td>179.1336 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>2</td><td>26,274.646 ns</td><td>343.0338 ns</td><td>304.0905 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint32_CodedOutputStream</td><td>10080</td><td>3</td><td>26,198.077 ns</td><td>273.9515 ns</td><td>228.7619 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint32_WriteContext</td><td>10080</td><td>3</td><td>25,080.381 ns</td><td>183.2058 ns</td><td>171.3708 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>3</td><td>26,040.873 ns</td><td>231.4728 ns</td><td>216.5198 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>3</td><td>24,999.521 ns</td><td>185.8175 ns</td><td>145.0741 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint32_CodedOutputStream</td><td>10080</td><td>4</td><td>25,329.038 ns</td><td>171.7474 ns</td><td>152.2496 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint32_WriteContext</td><td>10080</td><td>4</td><td>24,458.275 ns</td><td>258.2008 ns</td><td>241.5212 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>4</td><td>25,420.286 ns</td><td>346.3946 ns</td><td>324.0178 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>4</td><td>24,311.689 ns</td><td>208.6740 ns</td><td>174.2522 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteString_CodedOutputStream</td><td>10080</td><td>4</td><td>48,762.710 ns</td><td>504.7012 ns</td><td>472.0978 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteString_WriteContext</td><td>10080</td><td>4</td><td>43,186.768 ns</td><td>460.0201 ns</td><td>430.3031 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteNonAsciiString_CodedOutputStream</td><td>10080</td><td>4</td><td>58,977.662 ns</td><td>403.7553 ns</td><td>357.9186 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteNonAsciiString_WriteContext</td><td>10080</td><td>4</td><td>53,074.342 ns</td><td>410.6645 ns</td><td>384.1359 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteBytes_CodedOutputStream</td><td>10080</td><td>4</td><td>29,805.698 ns</td><td>350.2232 ns</td><td>327.5990 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteBytes_WriteContext</td><td>10080</td><td>4</td><td>28,476.570 ns</td><td>332.0743 ns</td><td>310.6225 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint32_CodedOutputStream</td><td>10080</td><td>5</td><td>24,709.000 ns</td><td>227.2553 ns</td><td>212.5748 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint32_WriteContext</td><td>10080</td><td>5</td><td>23,923.761 ns</td><td>122.4067 ns</td><td>95.5671 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>5</td><td>24,742.600 ns</td><td>318.2565 ns</td><td>297.6973 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>5</td><td>24,186.975 ns</td><td>251.8999 ns</td><td>235.6274 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>6</td><td>24,450.746 ns</td><td>221.7731 ns</td><td>196.5961 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>6</td><td>23,966.794 ns</td><td>205.9952 ns</td><td>192.6881 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>7</td><td>24,259.697 ns</td><td>190.2385 ns</td><td>177.9492 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>7</td><td>24,148.027 ns</td><td>441.0967 ns</td><td>391.0207 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>8</td><td>24,923.157 ns</td><td>337.7555 ns</td><td>315.9367 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>8</td><td>23,897.675 ns</td><td>337.0477 ns</td><td>298.7840 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>9</td><td>24,371.997 ns</td><td>147.2251 ns</td><td>137.7144 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>9</td><td>23,572.384 ns</td><td>222.4761 ns</td><td>208.1043 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawVarint64_CodedOutputStream</td><td>10080</td><td>10</td><td>24,046.973 ns</td><td>152.2813 ns</td><td>127.1618 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawVarint64_WriteContext</td><td>10080</td><td>10</td><td>23,604.864 ns</td><td>309.5136 ns</td><td>274.3757 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteString_CodedOutputStream</td><td>10080</td><td>10</td><td>20,713.519 ns</td><td>408.7713 ns</td><td>419.7781 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteString_WriteContext</td><td>10080</td><td>10</td><td>18,570.173 ns</td><td>353.3070 ns</td><td>406.8688 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteNonAsciiString_CodedOutputStream</td><td>10080</td><td>10</td><td>25,015.120 ns</td><td>276.8383 ns</td><td>258.9547 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteNonAsciiString_WriteContext</td><td>10080</td><td>10</td><td>23,031.145 ns</td><td>292.3483 ns</td><td>273.4628 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteBytes_CodedOutputStream</td><td>10080</td><td>10</td><td>11,428.878 ns</td><td>143.3080 ns</td><td>134.0504 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteBytes_WriteContext</td><td>10080</td><td>10</td><td>10,834.654 ns</td><td>108.1722 ns</td><td>101.1843 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteString_CodedOutputStream</td><td>10080</td><td>105</td><td>4,492.207 ns</td><td>81.2760 ns</td><td>76.0257 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteString_WriteContext</td><td>10080</td><td>105</td><td>4,377.620 ns</td><td>54.9834 ns</td><td>48.7414 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteNonAsciiString_CodedOutputStream</td><td>10080</td><td>105</td><td>7,957.847 ns</td><td>90.2907 ns</td><td>84.4580 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteNonAsciiString_WriteContext</td><td>10080</td><td>105</td><td>7,871.282 ns</td><td>92.9650 ns</td><td>86.9595 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteBytes_CodedOutputStream</td><td>10080</td><td>105</td><td>1,309.135 ns</td><td>16.4966 ns</td><td>14.6238 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteBytes_WriteContext</td><td>10080</td><td>105</td><td>1,217.929 ns</td><td>23.3196 ns</td><td>24.9517 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteString_CodedOutputStream</td><td>10080</td><td>10080</td><td>2,919.839 ns</td><td>43.9920 ns</td><td>38.9978 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteString_WriteContext</td><td>10080</td><td>10080</td><td>2,905.801 ns</td><td>36.0071 ns</td><td>33.6810 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteNonAsciiString_CodedOutputStream</td><td>10080</td><td>10080</td><td>4,545.312 ns</td><td>43.5249 ns</td><td>40.7132 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteNonAsciiString_WriteContext</td><td>10080</td><td>10080</td><td>4,499.643 ns</td><td>32.7095 ns</td><td>27.3139 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteBytes_CodedOutputStream</td><td>10080</td><td>10080</td><td>204.024 ns</td><td>2.1767 ns</td><td>2.0360 ns</td><td>0.0153</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteBytes_WriteContext</td><td>10080</td><td>10080</td><td>190.790 ns</td><td>1.5343 ns</td><td>1.3601 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteFixed32_CodedOutputStream</td><td>10080</td><td>?</td><td>31,139.305 ns</td><td>443.1924 ns</td><td>370.0857 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteFixed32_WriteContext</td><td>10080</td><td>?</td><td>29,716.341 ns</td><td>380.9786 ns</td><td>356.3676 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteFixed64_CodedOutputStream</td><td>10080</td><td>?</td><td>28,802.569 ns</td><td>313.9145 ns</td><td>293.6358 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteFixed64_WriteContext</td><td>10080</td><td>?</td><td>28,456.529 ns</td><td>293.1611 ns</td><td>274.2231 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawTag_OneByte_WriteContext</td><td>10080</td><td>?</td><td>27,713.106 ns</td><td>336.6327 ns</td><td>314.8864 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawTag_TwoBytes_WriteContext</td><td>10080</td><td>?</td><td>18,840.867 ns</td><td>268.8631 ns</td><td>238.3401 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawTag_ThreeBytes_WriteContext</td><td>10080</td><td>?</td><td>17,739.879 ns</td><td>233.3387 ns</td><td>194.8484 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>Baseline_WriteContext</td><td>10080</td><td>?</td><td>3.611 ns</td><td>0.0581 ns</td><td>0.0543 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawFloat_CodedOutputStream</td><td>10080</td><td>?</td><td>32,247.814 ns</td><td>452.8976 ns</td><td>401.4820 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawFloat_WriteContext</td><td>10080</td><td>?</td><td>30,686.329 ns</td><td>465.7982 ns</td><td>435.7080 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>WriteRawDouble_CodedOutputStream</td><td>10080</td><td>?</td><td>29,470.446 ns</td><td>256.7986 ns</td><td>227.6453 ns</td><td>-</td><td>-</td><td>-</td><td>64 B</td>
+</tr><tr><td>WriteRawDouble_WriteContext</td><td>10080</td><td>?</td><td>26,476.769 ns</td><td>237.0773 ns</td><td>221.7623 ns</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>
